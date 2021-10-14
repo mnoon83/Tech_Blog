@@ -16,7 +16,5 @@ router.post('/users/login',(req,req)=>{
     res.json(user ? jwt.sign({id:user.id}, process.env.SECRET):null)
   })
 })
-router.get('/users/posts',passport.authenticate('jwt'),(req,res)=>{
-  req.json(req.user)
-})
+router.get('/users/posts',passport.authenticate('jwt'),(req,res)=>req.json(req.user))
 module.exports=router
