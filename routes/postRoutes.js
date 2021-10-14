@@ -5,8 +5,8 @@ router.get('/posts',passport.authenticate('jwt')(req,res)=>Post.findAll()
   .then(posts=>res.jason(posts))
   .catch(err=>console.log(err)))
 router.post('/posts',passport.authenticate('jwt'),(req,res)=>Post.create({
-  title:req.body,
-  body:req.body,
+  title:req.body.title,
+  body:req.body.body,
   uid:req.user.id
 })
   .then(post=>res.json(post))
